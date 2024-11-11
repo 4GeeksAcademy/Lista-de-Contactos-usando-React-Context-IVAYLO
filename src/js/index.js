@@ -13,4 +13,5 @@ const root = createRoot(document.querySelector("#app"))
 
 //render your react application
 root.render(<Layout/>)
+import 'bootstrap/dist/css/bootstrap.min.css';
 

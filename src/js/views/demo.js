@@ -1,43 +1,93 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom"; // usa useNavigate en lugar de useHistory
 
 import { Context } from "../store/appContext";
-
 import "../../styles/demo.css";
 
-export const Demo = () => {
-	const { store, actions } = useContext(Context);
+const Demo = () => {
+    const navigate = useNavigate(); // reemplaza useHistory con useNavigate
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        phone: "",
+        address: ""
+    });
 
-	return (
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
-		</div>
-	);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSave = () => {
+        // Aquí puedes agregar la lógica para guardar el contacto, por ejemplo, llamando a una API o agregándolo al estado global
+        console.log("Contact saved:", formData);
+        navigate("/"); // Redirigir a la página principal después de guardar
+    };
+
+    const handleBack = () => {
+        navigate("/");
+    };
+
+    return (
+        <div className="text-center mt-5">
+            <h2>Agregar un nuevo contacto</h2>
+            <form className="contact-form">
+                <div className="form-group">
+                    <label>Nombre Completo</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Nombre completo"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Correo electronico</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Correo electronico"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Telefono de contacto</label>
+                    <input
+                        type="tel"
+                        className="form-control"
+                        placeholder="Telefono de contacto"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Dirección</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Dirección"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="button" className="btn btn-primary btn-block" onClick={handleSave}>
+                    Save
+                </button>
+            </form>
+            <p>
+                <a href="#" onClick={handleBack}>Página principal</a>
+            </p>
+        </div>
+    );
 };
+
+export default Demo;
