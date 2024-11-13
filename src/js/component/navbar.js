@@ -6,7 +6,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-light mb-3">
       <div className="container-fluid">
         <div className="ms-auto d-flex justify-content-end">
-          <Link to="/demo" className="btn btn-success"> {/* Cambia a "/demo" */}
+          <Link to="/demo" className="btn btn-success"> 
             Agregar un nuevo contacto
           </Link>
         </div>

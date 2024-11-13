@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom"; 
 import "../../styles/home.css";
 import { Modal, Button } from "react-bootstrap";
 
 export const Home = () => {
     const [showModal, setShowModal] = useState(false);
-    const navigate = useNavigate(); // Crea el navegador
+    const navigate = useNavigate(); 
 
     const handleDeleteClick = () => {
         setShowModal(true);
@@ -15,7 +15,6 @@ export const Home = () => {
         setShowModal(false);
     };
 
-    // Redirige a /demo
     const handleEditClick = () => {
         navigate("/demo");
     };
@@ -29,7 +28,7 @@ export const Home = () => {
                 email="rosa@perez.com"
                 image="https://img.freepik.com/fotos-premium/curriculum-vitae-caracter-vector-icon-ilustracion-cv-personal-icon-concepto-estilo-dibujos-animados-plano-aislado-blanco-adecuado-pagina-aterrizaje-web-banner-sticker-fondo_839035-1770790.jpg"
                 onDelete={handleDeleteClick}
-                onEdit={handleEditClick} // Pasa handleEditClick a ContactCard
+                onEdit={handleEditClick} 
             />
             <ContactCard
                 name="Rosana Garcia Perez"
@@ -38,7 +37,7 @@ export const Home = () => {
                 email="rosa@perez.com"
                 image="https://img.freepik.com/fotos-premium/curriculum-vitae-caracter-vector-icon-ilustracion-cv-personal-icon-concepto-estilo-dibujos-animados-plano-aislado-blanco-adecuado-pagina-aterrizaje-web-banner-sticker-fondo_839035-1770790.jpg"
                 onDelete={handleDeleteClick}
-                onEdit={handleEditClick} // Pasa handleEditClick a ContactCard
+                onEdit={handleEditClick} 
             />
             <ContactCard
                 name="Rosana Garcia Perez"
@@ -47,7 +46,7 @@ export const Home = () => {
                 email="rosa@perez.com"
                 image="https://img.freepik.com/fotos-premium/curriculum-vitae-caracter-vector-icon-ilustracion-cv-personal-icon-concepto-estilo-dibujos-animados-plano-aislado-blanco-adecuado-pagina-aterrizaje-web-banner-sticker-fondo_839035-1770790.jpg"
                 onDelete={handleDeleteClick}
-                onEdit={handleEditClick} // Pasa handleEditClick a ContactCard
+                onEdit={handleEditClick} 
             />
             <ContactCard
                 name="Rosana Garcia Perez"
@@ -56,9 +55,9 @@ export const Home = () => {
                 email="rosa@perez.com"
                 image="https://img.freepik.com/fotos-premium/curriculum-vitae-caracter-vector-icon-ilustracion-cv-personal-icon-concepto-estilo-dibujos-animados-plano-aislado-blanco-adecuado-pagina-aterrizaje-web-banner-sticker-fondo_839035-1770790.jpg"
                 onDelete={handleDeleteClick}
-                onEdit={handleEditClick} // Pasa handleEditClick a ContactCard
+                onEdit={handleEditClick} 
             />
-            {/* Repite lo mismo para las demás ContactCard */}
+
             <Modal show={showModal} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>¿Estás seguro que quieres borrarlo?</Modal.Title>
@@ -89,7 +88,7 @@ const ContactCard = ({ name, address, phone, email, image, onDelete, onEdit }) =
             <p><i className="fas fa-envelope"></i> {email}</p>
         </div>
         <div className="contact-actions">
-            <i className="fas fa-pen" onClick={onEdit}></i> {/* Redirige con onEdit */}
+            <i className="fas fa-pen" onClick={onEdit}></i> 
             <i className="fas fa-trash" onClick={onDelete}></i>
         </div>
     </div>

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"; // usa useNavigate en lugar de useHistory
+import { Link, useNavigate } from "react-router-dom";
 
-import { Context } from "../store/appContext";
+
 import "../../styles/demo.css";
 
 const Demo = () => {
-    const navigate = useNavigate(); // reemplaza useHistory con useNavigate
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -22,9 +22,8 @@ const Demo = () => {
     };
 
     const handleSave = () => {
-        // Aquí puedes agregar la lógica para guardar el contacto, por ejemplo, llamando a una API o agregándolo al estado global
         console.log("Contact saved:", formData);
-        navigate("/"); // Redirigir a la página principal después de guardar
+        navigate("/"); 
     };
 
     const handleBack = () => {
